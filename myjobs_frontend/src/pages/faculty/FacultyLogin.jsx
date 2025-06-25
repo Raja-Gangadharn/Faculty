@@ -90,7 +90,7 @@ const FacultyLogin = () => {
             </Form>
             <div className="text-center mt-4">
               <p className="register-text">
-                New faculty member? <Link to="/faculty/registration" className="fac-register-link">Register here</Link>
+                New faculty member? <Link to="/faculty/register" className="fac-register-link">Register here</Link>
               </p>
             </div>
           </div>

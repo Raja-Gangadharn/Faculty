@@ -78,9 +78,12 @@ const FacultyRegistration = () => {
     }
   };
   return (
-    <div className="d-flex justify-content-center align-items-center bg-light faculty-page">
-
-      <div className="row g-0 my-5 card-shadow ">
+    <div className="min-vh-100 d-flex align-items-center justify-content-center py-5">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-10 col-lg-8">
+            <div className="card shadow">
+              <div className="row g-0">
         {/* Left Panel */}
         <div className="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center bg-primary text-white p-4 rounded-start">
           <h4 className="text-center mb-3">Welcome to Faculty Finder</h4>
@@ -218,8 +221,11 @@ const FacultyRegistration = () => {
             </p>
           </form>
         </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   );
 };

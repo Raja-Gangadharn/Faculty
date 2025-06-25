@@ -13,7 +13,7 @@ import FacultyLayout from "../layouts/FacultyLayout";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isFaculty, isLoading } = useContext(AuthContext);
-  
+
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -23,11 +23,11 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
-  
+
   if (!isAuthenticated || !isFaculty) {
     return <Navigate to="/faculty/login" replace />;
   }
-  
+
   return children;
 };
 
@@ -47,11 +47,11 @@ export const AppRoutes = () => {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<LandingPage />} />
-      
+
       {/* Faculty Auth Routes */}
       <Route path="/faculty/login" element={<FacultyLogin />} />
       <Route path="/faculty/register" element={<FacultyRegistration />} />
-      
+
       <Route path="/faculty" element={<FacultyLayout />}>
         <Route path="dashboard" element={<FacultyDashboard />} />
         <Route path="profile" element={<ProfilePage />} />
@@ -59,12 +59,12 @@ export const AppRoutes = () => {
         <Route path="tutorial" element={<div> Tutorial </div>} />
         <Route path="jobs" element={<div> Jobs </div>} />
       </Route>
-      
+
       {/* Recruiter Routes */}
       <Route path="/recruiter/login" element={<RecruiterLogin />} />
       <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
       <Route path="/recruiter/registration" element={<RecruiterRegistration />} />
-      
+
       {/* 404 Route */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
