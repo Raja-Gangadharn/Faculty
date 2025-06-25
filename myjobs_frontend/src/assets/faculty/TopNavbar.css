@@ -1,0 +1,79 @@
+/* Top Navigation Bar Styles */
+.top-navbar {
+  background: #fff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-left: 250px; /* Match sidebar width */
+  width: calc(100% - 250px);
+}
+
+.top-navbar .navbar-toggler {
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+}
+
+.top-navbar .navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.top-navbar .nav-link {
+  color: #6c757d !important;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.top-navbar .nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.top-navbar .badge {
+  font-size: 0.6rem;
+  padding: 0.25em 0.4em;
+  font-weight: 500;
+}
+
+/* User Profile Section */
+.user-profile {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+
+.user-profile:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .top-navbar {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .top-navbar .navbar-collapse {
+    background: #fff;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-profile {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+  }
+}
