@@ -10,6 +10,48 @@ const api = axios.create({
   },
 });
 
+/**
+ * Get user role and authentication status
+ * @returns {Object} User authentication state
+ */
+export const getUserRole = () => {
+  const accessToken = localStorage.getItem('access_token');
+  const refreshToken = localStorage.getItem('refresh_token');
+  const userId = localStorage.getItem('user_id');
+  const email = localStorage.getItem('email');
+  const firstName = localStorage.getItem('first_name');
+  const lastName = localStorage.getItem('last_name');
+  const isFaculty = localStorage.getItem('is_faculty') === 'true';
+  const isRecruiter = localStorage.getItem('is_recruiter') === 'true';
+  const isVerified = localStorage.getItem('is_verified') === 'true';
+
+  return {
+    isAuthenticated: !!accessToken,
+    isFaculty,
+    isRecruiter,
+    isVerified,
+    userId,
+    email,
+    firstName,
+    lastName,
+  };
+};
+
+/**
+ * Logout the user
+ */
+export const logout = () => {
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+  localStorage.removeItem('user_id');
+  localStorage.removeItem('email');
+  localStorage.removeItem('first_name');
+  localStorage.removeItem('last_name');
+  localStorage.removeItem('is_faculty');
+  localStorage.removeItem('is_recruiter');
+  localStorage.removeItem('is_verified');
+};
+
 // Add a request interceptor to add the auth token to requests
 api.interceptors.request.use(
   (config) => {
@@ -36,7 +78,7 @@ api.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem('refresh_token');
-        const response = await axios.post(`${API_BASE_URL}token/refresh/`, {
+        const response = await api.post('token/refresh/', {
           refresh: refreshToken,
         });
 
@@ -92,39 +134,6 @@ export const loginUser = async (email, password) => {
 };
 
 /**
- * Logs out the current user
- */
-export const logout = () => {
-  // Remove all items from localStorage
-  localStorage.removeItem('access_token');
-  localStorage.removeItem('refresh_token');
-  localStorage.removeItem('user_id');
-  localStorage.removeItem('email');
-  localStorage.removeItem('first_name');
-  localStorage.removeItem('last_name');
-  localStorage.removeItem('is_faculty');
-  localStorage.removeItem('is_recruiter');
-  localStorage.removeItem('is_verified');
-};
-
-/**
- * Gets the current user's role and authentication status
- * @returns {Object} User role and authentication status
- */
-export const getUserRole = () => {
-  return {
-    isAuthenticated: !!localStorage.getItem('access_token'),
-    isFaculty: localStorage.getItem('is_faculty') === 'true',
-    isRecruiter: localStorage.getItem('is_recruiter') === 'true',
-    isVerified: localStorage.getItem('is_verified') === 'true',
-    userId: localStorage.getItem('user_id'),
-    email: localStorage.getItem('email'),
-    firstName: localStorage.getItem('first_name'),
-    lastName: localStorage.getItem('last_name'),
-  };
-};
-
-/**
  * Registers a new faculty member
  * @param {Object} formData - Faculty registration data
  * @returns {Promise<Object>} Response data
@@ -141,7 +150,7 @@ export const registerFaculty = async (formData) => {
     data.append('transcripts', formData.transcripts);
     data.append('is_faculty', true);
 
-    const response = await axios.post(`${API_BASE_URL}faculty/register/`, data, {
+    const response = await api.post('faculty/register/', data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -152,16 +161,20 @@ export const registerFaculty = async (formData) => {
   }
 };
 
+/**
+ * Registers a new recruiter
+ * @param {Object} formData - Recruiter registration data
+ * @returns {Promise<Object>} Response data
+ */
 export const registerRecruiter = async (formData) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}recruiter/register/`, {
+    const response = await api.post('recruiter/register/', {
       first_name: formData.firstName,
       last_name: formData.lastName,
       email: formData.email,
       password: formData.password,
-      college: formData.college,
+      college: formData.college
     });
-
     return response.data;
   } catch (error) {
     throw error.response?.data || { detail: 'Recruiter registration failed' };

@@ -40,11 +40,35 @@ const RecruiterRegistration = () => {
     }
 
     try {
-      await registerRecruiter(formData);
+      const registrationData = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+        college: formData.college
+      };
+
+      await registerRecruiter(registrationData);
       alert('Recruiter registration successful!');
-      // Optionally redirect or clear form
+      // Clear form after successful registration
+      setFormData({
+        firstName: '',
+        lastName: '',
+        college: '',
+        email: '',
+        password: ''
+      });
     } catch (err) {
-      alert(err.detail || 'Registration failed.');
+      console.error('Registration error:', err);
+      if (err.detail) {
+        alert(err.detail);
+      } else if (err.email) {
+        alert(err.email);
+      } else if (err.password) {
+        alert(err.password);
+      } else {
+        alert('Registration failed. Please check your details and try again.');
+      }
     }
   };
   return (

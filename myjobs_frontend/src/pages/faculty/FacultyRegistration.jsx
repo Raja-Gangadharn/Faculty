@@ -78,151 +78,143 @@ const FacultyRegistration = () => {
     }
   };
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center py-5">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-10 col-lg-8">
-            <div className="card shadow">
-              <div className="row g-0">
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="row g-0 card-shadow shadow-lg rounded-4 overflow-hidden" style={{ maxWidth: '950px', width: '100%' }}>
         {/* Left Panel */}
-        <div className="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center bg-primary text-white p-4 rounded-start">
+        <div className="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center fav-login-left-panel text-white p-4 rounded-start">
           <h4 className="text-center mb-3">Welcome to Faculty Finder</h4>
           <p className="text-center">
             We connect universities with a professional network of qualified faculty — quickly, efficiently, and affordably.
           </p>
         </div>
-
         {/* Right Panel */}
-        <div className="col-md-6 col-12 bg-white p-4 rounded-end">
-          <h4 className="mb-3 text-center text-md-start">Faculty Registration</h4>
+        <div className="col-md-6 col-12 bg-white p-4 rounded-end d-flex align-items-center justify-content-center" style={{ minHeight: '600px' }}>
+          <div className="w-100" style={{ maxWidth: '400px' }}>
+            <h4 className="mb-3 text-center text-md-start fac-recruiter-title">Faculty Registration</h4>
+            <form onSubmit={handleSubmit} noValidate>
+              {successMessage && (
+                <div className="alert alert-success text-center" role="alert">
+                  {successMessage}
+                </div>
+              )}
+              {/* First Name */}
+              <div className="mb-3">
+                <label className="form-label">First Name *</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.firstName ? 'is-invalid' : ''}`}
+                />
+                {errors.firstName && <div className="invalid-feedback">{errors.firstName}</div>}
+              </div>
 
-          {successMessage && (
-            <div className="alert alert-success text-center" role="alert">
-              {successMessage}
-            </div>
-          )}
+              {/* Last Name */}
+              <div className="mb-3">
+                <label className="form-label">Last Name *</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.lastName ? 'is-invalid' : ''}`}
+                />
+                {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
+              </div>
 
-          <form onSubmit={handleSubmit} noValidate>
-            {/* First Name */}
-            <div className="mb-3">
-              <label className="form-label">First Name *</label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className={`form-control ${errors.firstName ? 'is-invalid' : ''}`}
-              />
-              {errors.firstName && <div className="invalid-feedback">{errors.firstName}</div>}
-            </div>
+              {/* Email */}
+              <div className="mb-3">
+                <label className="form-label">Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.email ? 'is-invalid' : ''}`}
+                />
+                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+              </div>
 
-            {/* Last Name */}
-            <div className="mb-3">
-              <label className="form-label">Last Name *</label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
-              />
-              {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
-            </div>
+              {/* Password */}
+              <div className="mb-3">
+                <label className="form-label">Password *</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.password ? 'is-invalid' : ''}`}
+                />
+                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+              </div>
 
-            {/* Email */}
-            <div className="mb-3">
-              <label className="form-label">Email *</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-              />
-              {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-            </div>
+              {/* Work Preference */}
+              <div className="mb-3">
+                <label className="form-label">Work Preference *</label>
+                <select
+                  name="workPreference"
+                  value={formData.workPreference}
+                  onChange={handleChange}
+                  className={`fac-form-select field-control ${errors.workPreference ? 'is-invalid' : ''}`}
+                >
+                  <option value="">-- Select Work Preference --</option>
+                  <option value="full-time">Full-time</option>
+                  <option value="part-time">Part-time</option>
+                  <option value="remote">Remote</option>
+                </select>
+                {errors.workPreference && <div className="invalid-feedback">{errors.workPreference}</div>}
+              </div>
 
-            {/* Password */}
-            <div className="mb-3">
-              <label className="form-label">Password *</label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-              />
-              {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-            </div>
+              {/* Resume */}
+              <div className="mb-3">
+                <label className="form-label">Resume *</label>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.resume ? 'is-invalid' : ''}`}
+                  accept=".pdf,.doc,.docx"
+                />
+                {errors.resume && <div className="invalid-feedback">{errors.resume}</div>}
+              </div>
 
-            {/* Work Preference */}
-            <div className="mb-3">
-              <label className="form-label">Work Preference *</label>
-              <select
-                name="workPreference"
-                value={formData.workPreference}
-                onChange={handleChange}
-                className={`form-select ${errors.workPreference ? 'is-invalid' : ''}`}
-              >
-                <option value="">Select preference</option>
-                <option value="remote">Remote</option>
-                <option value="onsite">Onsite</option>
-                <option value="hybrid">Hybrid</option>
-              </select>
-              {errors.workPreference && <div className="invalid-feedback">{errors.workPreference}</div>}
-            </div>
+              {/* Transcripts */}
+              <div className="mb-3">
+                <label className="form-label">Transcripts *</label>
+                <input
+                  type="file"
+                  name="transcripts"
+                  onChange={handleChange}
+                  className={`form-control field-control ${errors.transcripts ? 'is-invalid' : ''}`}
+                  accept=".pdf,.doc,.docx"
+                />
+                {errors.transcripts && <div className="invalid-feedback">{errors.transcripts}</div>}
+              </div>
 
-            {/* Resume */}
-            <div className="mb-3">
-              <label className="form-label">Upload Resume *</label>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.doc,.docx"
-                onChange={handleChange}
-                className={`form-control ${errors.resume ? 'is-invalid' : ''}`}
-              />
-              {errors.resume && <div className="invalid-feedback">{errors.resume}</div>}
-            </div>
-
-            {/* Transcripts */}
-            <div className="mb-3">
-              <label className="form-label">Upload Transcripts *</label>
-              <input
-                type="file"
-                name="transcripts"
-                accept=".pdf,.doc,.docx"
-                onChange={handleChange}
-                className={`form-control ${errors.transcripts ? 'is-invalid' : ''}`}
-              />
-              {errors.transcripts && <div className="invalid-feedback">{errors.transcripts}</div>}
-            </div>
-
-            {/* Terms */}
-            <div className="form-check mb-3">
-              <input
-                type="checkbox"
-                name="agreeTerms"
-                checked={formData.agreeTerms}
-                onChange={handleChange}
-                className={`form-check-input ${errors.agreeTerms ? 'is-invalid' : ''}`}
-                id="agreeTerms"
-              />
-              <label className="form-check-label" htmlFor="agreeTerms">
-                I agree to the <a href="#">terms and conditions</a>
-              </label>
-              {errors.agreeTerms && <div className="invalid-feedback d-block">{errors.agreeTerms}</div>}
-            </div>
-
-            <button type="submit" className="btn btn-primary w-100">Sign up</button>
-
+              {/* Terms and Conditions */}
+              <div className="mb-3">
+                <div className="form-check">
+                  <input
+                    type="checkbox"
+                    name="agreeTerms"
+                    checked={formData.agreeTerms}
+                    onChange={handleChange}
+                    className={`form-check-input ${errors.agreeTerms ? 'is-invalid' : ''}`}
+                  />
+                  <label className="form-check-label">
+                    I agree to the <a href="/terms" target="_blank">Terms and Conditions</a>
+                  </label>
+                </div>
+                {errors.agreeTerms && <div className="invalid-feedback">{errors.agreeTerms}</div>}
+              </div>
+              <button type="submit" className="btn btn-primary w-100">
+                Register
+              </button>
+            </form>
             <p className="text-center mt-3">
               Already have an account? <Link to="/faculty/login">Sign in</Link>
             </p>
-          </form>
-        </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
