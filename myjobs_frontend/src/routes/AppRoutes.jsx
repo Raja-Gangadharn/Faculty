@@ -10,6 +10,7 @@ import RecruiterLogin from "../pages/recruiter/RecruiterLogin";
 import RecruiterDashboard from "../pages/recruiter/RecruiterDashboard"
 import RecruiterRegistration from "../pages/recruiter/RecruiterRegistration";
 import FacultyLayout from "../layouts/FacultyLayout";
+import JobOpportunities from "../pages/faculty/JobOpportunities";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isFaculty, isLoading } = useContext(AuthContext);
@@ -57,12 +58,11 @@ export const AppRoutes = () => {
         <Route path="profile" element={<ProfilePage />} />
         <Route path="profile/edit" element={<ProfilePage />} />
         <Route path="tutorial" element={<div> Tutorial </div>} />
-        <Route path="jobs" element={<div> Jobs </div>} />
+        <Route path="jobs" element={<JobOpportunities />} />
       </Route>
 
       {/* Recruiter Routes */}
       <Route path="/recruiter/login" element={<RecruiterLogin />} />
-      <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
       <Route path="/recruiter/registration" element={<RecruiterRegistration />} />
 
       {/* 404 Route */}

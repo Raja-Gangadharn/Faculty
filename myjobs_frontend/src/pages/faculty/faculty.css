@@ -656,3 +656,9 @@ a:hover {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   outline: 0;
 }
+
+/* Ensures sidebar stays below navbar */
+.job-filters-sidebar {
+  position: relative;
+  z-index: 1;
+}

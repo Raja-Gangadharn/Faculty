@@ -127,7 +127,7 @@ const Memberships = ({ isEditing }) => {
                   <Form.Group>
                     <Form.Label>Start Date</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text"><FaCalendarAlt /></span>
+                      <span className="input-group-text "><FaCalendarAlt className="my-2" /></span>
                       <Form.Control 
                         type="date" 
                         name="startDate" 
@@ -141,7 +141,7 @@ const Memberships = ({ isEditing }) => {
                   <Form.Group>
                     <Form.Label>End Date</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text"><FaCalendarAlt /></span>
+                      <span className="input-group-text"><FaCalendarAlt className="my-2" /></span>
                       <Form.Control 
                         type="date" 
                         name="endDate" 

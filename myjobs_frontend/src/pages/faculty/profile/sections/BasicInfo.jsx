@@ -144,7 +144,7 @@ const BasicInfo = ({ isEditing }) => {
             <Form.Group>
               <Form.Label>Email</Form.Label>
               <div className="input-group">
-                <span className="input-group-text"><FaEnvelope /></span>
+                <span className="input-group-text py-3"><FaEnvelope /></span>
                 <Form.Control 
                   type="email" 
                   name="email" 
@@ -159,7 +159,7 @@ const BasicInfo = ({ isEditing }) => {
             <Form.Group>
               <Form.Label>Phone Number</Form.Label>
               <div className="input-group">
-                <span className="input-group-text"><FaPhone /></span>
+                <span className="input-group-text py-3"><FaPhone /></span>
                 <Form.Control 
                   type="tel" 
                   name="phone" 
@@ -174,7 +174,7 @@ const BasicInfo = ({ isEditing }) => {
             <Form.Group>
               <Form.Label>Date of Birth</Form.Label>
               <div className="input-group">
-                <span className="input-group-text"><FaCalendarAlt /></span>
+                <span className="input-group-text py-3"><FaCalendarAlt /></span>
                 <Form.Control 
                   type="date" 
                   name="dob" 
@@ -238,7 +238,7 @@ const BasicInfo = ({ isEditing }) => {
             <Form.Group>
               <Form.Label>City</Form.Label>
               <div className="input-group">
-                <span className="input-group-text"><FaMapMarkerAlt /></span>
+                <span className="input-group-text py-3"><FaMapMarkerAlt /></span>
                 <Form.Control 
                   type="text" 
                   name="city" 
@@ -253,7 +253,7 @@ const BasicInfo = ({ isEditing }) => {
             <Form.Group>
               <Form.Label>LinkedIn Profile</Form.Label>
               <div className="input-group">
-                <span className="input-group-text"><FaLinkedin /></span>
+                <span className="input-group-text py-3"><FaLinkedin /></span>
                 <Form.Control 
                   type="url" 
                   name="linkedin" 

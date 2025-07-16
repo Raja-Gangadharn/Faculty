@@ -77,6 +77,7 @@ Global Styles
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
+  text-decoration: none !important;
 }
 
 .portal-btn::before {
@@ -115,6 +116,13 @@ Global Styles
   background-color: white;
 }
 
+.feature-card h3,.feature-card p{
+  background: linear-gradient(135deg, #0d6efd 0%, #198754 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
 .feature-card {
   padding: 2rem;
   border-radius: 15px;
@@ -158,8 +166,62 @@ Global Styles
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotateY(-20deg);
+  }
+  60% {
+    transform: perspective(400px) rotateY(10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotateY(-5deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 1s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 1s ease-out;
+}
+
+.animate-flip {
+  animation: flip 1s ease-out;
 }
 
 .animate-fade-in-delay {
@@ -172,7 +234,77 @@ Global Styles
   opacity: 0;
 }
 
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #0d6efd 0%, #198754 100%);
+  color: #ffffff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.cta-section .cta-btn {
+  font-size: 1.125rem;
+  padding: 0.75rem 2.5rem;
+  text-decoration: none !important;
+}
+
 .landing-body {
   min-height: calc(100vh - 72px); 
   
 }
+.nav-link{
+  text-decoration: none !important;
+}
+
+.stats-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-color: #fdfdfd; /* Red background */
+}
+
+.stats-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 25s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 20px;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.stats-marquee-wrapper {
+  padding: 40px 0;
+  background: #fdfdfd;
+}
+

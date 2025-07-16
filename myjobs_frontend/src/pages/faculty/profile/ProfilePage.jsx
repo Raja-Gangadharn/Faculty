@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Tab, Nav, Card, Button } from 'react-bootstrap';
 import BasicInfo from './sections/BasicInfo';
 import EducationalInfo from './sections/EducationalInfo';
@@ -12,6 +12,11 @@ import './profile.css';
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('basic');
   const [isEditing, setIsEditing] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSave = () => {
     // Handle save logic

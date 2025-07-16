@@ -1,25 +1,38 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FaLinkedinIn, FaTwitter, FaUniversity, FaGraduationCap, FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import '../../assets/faculty/Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="faculty-footer mt-auto py-3 bg-light">
+    <footer className="faculty-footer">
       <Container>
-        <Row className="justify-content-between align-items-center">
+        <Row className="footer-bottom">
           <Col md={6} className="text-center text-md-start">
-            <p className="mb-0 text-muted">
-              &copy; {currentYear} Faculty Finder. All rights reserved.
-            </p>
+            <p className="mb-0">&copy; {currentYear} Faculty Finder. All rights reserved.</p>
+            <div className="legal-links">
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <span className="divider">|</span>
+              <Link to="/terms">Terms of Service</Link>
+              <span className="divider">|</span>
+              <Link to="/cookies">Cookie Policy</Link>
+            </div>
           </Col>
           <Col md={6} className="text-center text-md-end">
-            <p className="mb-0">
-              <a href="/privacy-policy" className="text-decoration-none me-3">Privacy Policy</a>
-              <a href="/terms" className="text-decoration-none me-3">Terms of Service</a>
-              <a href="/contact" className="text-decoration-none">Contact Us</a>
-            </p>
+            <div className="social-links mx-5">
+              <a href="https://linkedin.com/company/faculty-finder" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <FaLinkedinIn />
+              </a>
+              <a href="https://twitter.com/facultyfinder" target="_blank" rel="noreferrer" aria-label="Twitter">
+                <FaTwitter />
+              </a>
+              <a href="https://facebook.com/facultyfinder" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <FaUniversity />
+              </a>
+            </div>
           </Col>
         </Row>
       </Container>
